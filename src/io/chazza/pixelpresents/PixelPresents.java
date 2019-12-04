@@ -11,11 +11,8 @@ import io.chazza.pixelpresents.manager.ActionManager;
 import io.chazza.pixelpresents.manager.MessageManager;
 import io.chazza.pixelpresents.manager.PresentManager;
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import java.util.*;
 
 /**
@@ -96,22 +93,6 @@ public class PixelPresents extends JavaPlugin {
             debug("PlaceholderAPI has been found!");
             new PAPIHook(this).hook();
         }
-
-        new BukkitRunnable(){
-
-            @Override
-            public void run() {
-                Iterator<Present> it = getPresents().iterator();
-                Present present;
-                while(it.hasNext()){
-                    present = it.next();
-                    Location center = present.getLocation().clone().add(0.5D, 0.75, 0.5);
-                    present.getLocation().getWorld().playEffect(center, Effect.HAPPY_VILLAGER, 5);
-                    present.getLocation().getWorld().playEffect(center, Effect.HAPPY_VILLAGER, 5);
-                    present.getLocation().getWorld().playEffect(center, Effect.HAPPY_VILLAGER, 5);
-                }
-            }
-        }.runTaskTimerAsynchronously(this, 20, 20);
     }
 
     @Override
