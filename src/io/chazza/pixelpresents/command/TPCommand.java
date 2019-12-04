@@ -15,7 +15,7 @@ public class TPCommand extends BaseCommand {
     private final PixelPresents core;
     public TPCommand(PixelPresents core){
         this.core = core;
-        core.getCmdManager().registerCommand(this, true);
+        //core.getCmdManager().registerCommand(this, true);
     }
 
     @Subcommand("tp")

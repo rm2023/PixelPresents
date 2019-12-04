@@ -1,6 +1,5 @@
 package io.chazza.pixelpresents;
 
-import co.aikar.commands.BukkitCommandManager;
 import io.chazza.pixelpresents.api.ActionType;
 import io.chazza.pixelpresents.api.Present;
 import io.chazza.pixelpresents.command.*;
@@ -21,15 +20,10 @@ import java.util.*;
 public class PixelPresents extends JavaPlugin {
 
     private Map<UUID, Long> playersEditing;
-    private BukkitCommandManager bcm;
     private List<Present> presents;
 
     public Map<UUID, Long> getPlayersEditing() {
         return playersEditing;
-    }
-
-    public BukkitCommandManager getCmdManager() {
-        return bcm;
     }
 
     public List<Present> getPresents() {
@@ -63,8 +57,6 @@ public class PixelPresents extends JavaPlugin {
         playersEditing = new HashMap<>();
         presents = new ArrayList<>();
 
-        bcm = new BukkitCommandManager(this);
-        bcm.getCommandReplacements().addReplacement("command", "pixelpresents|present|presents");
         presentManager = new PresentManager();
         messageManager = new MessageManager();
         actionManager = new ActionManager();
@@ -77,11 +69,7 @@ public class PixelPresents extends JavaPlugin {
         actionManager.addAction("[Sound]", ActionType.SOUND);
 
         // Commands
-        new MainCommand(this);
-        new SetCommand(this);
-        new ReloadCommand(this);
-        new ListCommand(this);
-        new TPCommand(this);
+        this.getCommand("presentset").setExecutor(new SetCommand(this));
 
         // Events
         new BreakEvent(this);

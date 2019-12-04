@@ -15,7 +15,7 @@ public class ReloadCommand extends BaseCommand {
     private final PixelPresents core;
     public ReloadCommand(PixelPresents core){
         this.core = core;
-        core.getCmdManager().registerCommand(this, true);
+        //core.getCmdManager().registerCommand(this, true);
     }
 
     @Subcommand("reload")

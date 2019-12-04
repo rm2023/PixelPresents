@@ -22,7 +22,7 @@ public class ListCommand extends BaseCommand {
     private final PixelPresents core;
     public ListCommand(PixelPresents core){
         this.core = core;
-        core.getCmdManager().registerCommand(this, true);
+        //core.getCmdManager().registerCommand(this, true);
     }
 
     @Subcommand("list")
